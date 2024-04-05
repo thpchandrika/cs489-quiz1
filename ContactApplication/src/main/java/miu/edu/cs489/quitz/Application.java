@@ -6,6 +6,7 @@ import miu.edu.cs489.quitz.model.PhoneNumber;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application {
 
@@ -35,9 +36,11 @@ public class Application {
     }
 
     public  static  void  printContactsInSorted(List<Contact> contactList){
+        List<Contact> sortedByLastName = contactList.stream().sorted(Comparator.comparing(Contact::getLastName)).toList();
         System.out.println("[");
-        contactList.stream().sorted(Comparator.comparing(Contact::getLastName))
-                .forEach(contact -> System.out.println(contact.toJSONString()));
+        for (Contact contact : sortedByLastName){
+            System.out.println(contact.toJSONString());
+        }
         System.out.println("]");
     }
 }

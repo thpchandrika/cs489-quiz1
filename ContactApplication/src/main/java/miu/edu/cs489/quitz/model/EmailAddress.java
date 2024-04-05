@@ -36,6 +36,6 @@ public class EmailAddress {
     }
 
     public String toJSONString() {
-        return String.format("{ \"email\": %s, \"label\": %s }", email, label);
+        return String.format("{ \"email\": \"%s\", \"label\":\"%s\" }", email, label);
     }
 }

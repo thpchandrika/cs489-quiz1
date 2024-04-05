@@ -36,6 +36,6 @@ public class PhoneNumber {
     }
 
     public String toJSONString() {
-        return String.format("{ \"phoneNumber\": %s, \"label\": %s }", phoneNumber, label);
+        return String.format("{ \"phoneNumber\":\"%s\", \"label\": \"%s\" }", phoneNumber, label);
     }
 }

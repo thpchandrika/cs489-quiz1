@@ -84,7 +84,24 @@ public class Contact {
     }
 
     public  String toJSONString(){
-      return  String.format("{ \"firstName\": \"%s\", \"lastName\": \"%s\", \"company\": \"%s\" , \"jobTitle\": \"%s\"," +
-                "\"emailAddressList\": \"%s\", \"phoneNumberList\": %s }", firstName, lastName, company, jobTitle, emailAddressList, phoneNumberList);
+        StringBuilder phoneNumberListJson = new StringBuilder();
+        StringBuilder emailListJson = new StringBuilder();
+        if(emailAddressList != null){
+            emailListJson.append("[");
+            for(EmailAddress emailAddress : emailAddressList){
+                emailListJson.append(emailAddress.toJSONString());
+            }
+            emailListJson.append("]");
+        }
+        if(phoneNumberList != null){
+            phoneNumberListJson.append("[");
+            for(PhoneNumber phoneNumber : phoneNumberList){
+                phoneNumberListJson.append(phoneNumber.toJSONString());
+            }
+            phoneNumberListJson.append("]");
+        }
+      return  String.format("\t{ \"firstName\": \"%s\", \"lastName\": \"%s\", \"company\": \"%s\" , \"jobTitle\": \"%s\"," +
+                "\"emailAddressList\": \"%s\", \"phoneNumberList\": %s }", firstName, lastName, company, jobTitle,
+              emailListJson.toString(), phoneNumberListJson.toString());
     }
 }
