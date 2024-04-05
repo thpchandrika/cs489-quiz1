@@ -1,0 +1,8 @@
+Functional Requirments
+========================================
+
+1. User can add new contacts.
+2. User can search through the contacts.
+3. User can update the existing contacts.
+4. User can delete old contacts.
+5. User can merge duplicate contacts.
